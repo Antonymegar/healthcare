@@ -1,8 +1,8 @@
 
 <template>
  <v-container >
- <v-row class="justify-center mt-6 ml-4">
-    <v-col cols="12" md="10">
+ <v-row class="justify-center mt-6">
+  <v-col cols="12" md="8" offset-md="2">
     <v-data-table
       :headers="[
         { title: 'ID', key: 'id' },

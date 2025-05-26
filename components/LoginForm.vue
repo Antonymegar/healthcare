@@ -74,8 +74,9 @@
   </template>
   
   <script setup>
-  const { $axios } = useNuxtApp()
-  
+  const { $config, $axios } = useNuxtApp()
+  const router = useRouter()
+
   const form = reactive({
     username: '',
     email: '',
@@ -89,17 +90,54 @@
   })
   
   const login = async () => {
-    try {
-      await $axios.post('/login/', form)
-      snackbar.text = ' Login successful!'
-      snackbar.color = 'success'
-      snackbar.show = true
-    } catch (err) {
-      snackbar.text = err.response?.data?.detail || 'Login failed.'
-      snackbar.color = 'error'
-      snackbar.show = true
+  try {
+    const payload = {
+      grant_type: 'password',
+      username: form.username,
+      password: form.password,
+      email:form.email,
+      client_id: $config.public.oauthClientId,
+      client_secret: $config.public.oauthClientSecret
     }
+
+    // 🔐 Request access token
+    const tokenResponse = await $axios.post('o/token/', payload, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    const accessToken = tokenResponse.data.access_token
+    localStorage.setItem('access_token', accessToken)
+
+    // 👤 Fetch user profile
+    const userResponse = await $axios.get('api/user-profile/', {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    })
+
+    const user = userResponse.data
+    console.log("Iam user", user)
+    localStorage.setItem('user', JSON.stringify(user))
+
+    // ✅ Show success
+    snackbar.text = 'Login successful!'
+    snackbar.color = 'success'
+    snackbar.show = true
+
+    // 🔀 Redirect based on role
+    if (user.role === 'doctor') {
+      router.push('/doctors/appointments')
+    } else if (user.role === 'patient') {
+      router.push('/patients/book')
+    } else {
+      router.push('/')
+    }
+
+  } catch (err) {
+    console.error(err)
+    snackbar.text = err.response?.data?.error_description || 'Login failed.'
+    snackbar.color = 'error'
+    snackbar.show = true
   }
+}
   </script>
   <style scoped>
   .custom-text-field .v-field--focused .v-field__outline {

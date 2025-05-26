@@ -2,13 +2,13 @@
 
 <template>
   <v-container>
-    <v-row class="justify-center mt-6 ml-4">
-      <v-col cols="12" md="10">
+    <v-row class="justify-center mt-6">
+      <v-col cols="12" md="8" offset-md="2">
         <v-data-table
           :headers="headers"
           :items="items"
           :search="search"
-          class="elevation-1"
+          class="custom-table pa-2"
           item-value="patient"
         >
           <!-- Custom Table Top -->
@@ -66,3 +66,9 @@ function getStatusColor(status) {
   }
 }
 </script>
+<style scoped>
+.custom-table {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+}
+</style>

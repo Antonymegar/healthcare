@@ -14,7 +14,10 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: 'http://127.0.0.1:8000/api', // Or your live Django API URL
-    }
+      apiBase: 'http://127.0.0.1:8000/',
+      oauthClientId: process.env.NUXT_PUBLIC_OAUTH_CLIENT_ID,
+      oauthClientSecret: process.env.NUXT_PUBLIC_OAUTH_CLIENT_SECRET
+    },
+    
   }
 })
