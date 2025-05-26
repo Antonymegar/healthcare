@@ -8,14 +8,14 @@
 
     <!-- Main Navigation List with flex-grow -->
   <v-list dense nav class="flex-grow-1">
-  <v-list-item to="/appointments" exact>
+  <v-list-item to="/doctors/appointments" exact>
     <template #prepend>
       <v-icon class="mr-3 text-black">mdi-calendar-clock</v-icon>
     </template>
     <v-list-item-title>Appointments</v-list-item-title>
   </v-list-item>
 
-  <v-list-item to="/bookings" exact>
+  <v-list-item to="/patients/book" exact>
     <template #prepend>
       <v-icon class="mr-3 text-black">mdi-book-open-page-variant</v-icon>
     </template>
