@@ -57,7 +57,7 @@
 
 <script setup>
 definePageMeta({ layout: 'navbar' })
-
+const { $config, $axios } = useNuxtApp()
 const search = ref('')
 const snackbar = ref({ show: false, text: '', color: '' })
 const appointments = ref([])

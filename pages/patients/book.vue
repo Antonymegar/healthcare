@@ -95,7 +95,7 @@
 
 <script setup>
 definePageMeta({ layout: 'navbar' })
-
+const { $config, $axios } = useNuxtApp()
 const dialog = ref(false)
 const search = ref('')
 const appointments = ref([])
@@ -126,7 +126,7 @@ const fetchAppointments = async () => {
       .map(a => ({
         ...a,
         doctor: typeof a.doctor === 'object'
-          ? `Dr. ${a.doctor.user.first_name} ${a.doctor.user.last_name}`
+          ? `${a.doctor.name}`
           : `Doctor #${a.doctor}`
       }))
   } catch (err) {
@@ -138,11 +138,11 @@ const fetchAppointments = async () => {
 
 const fetchDoctors = async () => {
   const token = localStorage.getItem('access_token')
-  const res = await $axios.get('/api/doctors/', {
+  const res = await $axios.get('/api/doctors-list/', {
     headers: { Authorization: `Bearer ${token}` }
   })
   doctors.value = res.data.map(doc => ({
-    name: `Dr. ${doc.user.first_name} ${doc.user.last_name}`,
+    name: `${doc.name}`,
     id: doc.id
   }))
 }
