@@ -10,7 +10,7 @@
               “The Best Digital Health Platform”
             </div>
             <div class="text-caption text-white">
-              Linda Afya<br />Covering Universal Healthcare for you !
+              Linda Afya<br />Fast Health checkup Bookings!
             </div>
 
           </div>
@@ -23,7 +23,7 @@
             Welcome to <span class="text-primary">DigiHealth</span>
           </v-card-title>
           <v-card-subtitle class="mb-6">
-            Get Health Cover for Life .
+            Know Your Health .
           </v-card-subtitle>
 
           <v-form @submit.prevent="register">

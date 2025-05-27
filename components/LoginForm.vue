@@ -13,7 +13,7 @@
                 “The Best Digital Health Platform”
                 </div>
                 <div class="text-caption text-white">
-                Linda Afya<br />Covering Universal Healthcare for you !
+                  Linda Afya<br />Fast Health checkup Bookings!
                 </div>
 
           </div>
