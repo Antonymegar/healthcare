@@ -90,9 +90,9 @@ const fetchAppointments = async () => {
       .filter(a => a.doctor === user.doctor_id)
       .map(a => ({
         ...a,
-        patient_name: typeof a.patient === 'object'
-          ? `${a.patient.user.first_name} ${a.patient.user.last_name}`
-          : `Patient #${a.patient}`
+        patient_name: typeof a === 'object'
+          ? `${a.patient_name}`
+          : `${a.patient_name}`
       }))
   } catch (err) {
     snackbar.value = {

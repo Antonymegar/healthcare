@@ -125,8 +125,8 @@ const fetchAppointments = async () => {
       .filter(a => a.patient === user.patient_id)
       .map(a => ({
         ...a,
-        doctor: typeof a.doctor === 'object'
-          ? `${a.doctor.name}`
+        doctor: typeof a === 'object'
+          ? `${a.doctor_name}`
           : `Doctor #${a.doctor}`
       }))
   } catch (err) {
