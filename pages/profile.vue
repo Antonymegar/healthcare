@@ -33,12 +33,6 @@ if (process.client) {
               </v-list-item-title>
             </v-list-item>
 
-            <v-list-item>
-              <v-list-item-title>
-                <strong>User ID:</strong> {{ user?.id }}
-              </v-list-item-title>
-            </v-list-item>
-
             <v-list-item v-if="user?.role === 'patient'">
               <v-list-item-title>
                 <strong>Patient ID:</strong> {{ user?.patient_id }}
