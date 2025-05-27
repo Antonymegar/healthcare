@@ -2,7 +2,7 @@
   <v-container fluid class="fill-height pa-0">
     <v-row no-gutters class="fill-height">
 
-      <!-- Left image section -->
+      
       <v-col cols="12" md="5" class="d-none d-md-flex">
         <v-img src="/images/register.jpeg" class="rounded-0" cover>
           <div class="d-flex flex-column justify-end pa-6 white--text" style="height: 100%;">
@@ -17,7 +17,6 @@
         </v-img>
       </v-col>
 
-      <!-- Right form section -->
       <v-col cols="12" md="7" class="d-flex align-center justify-center">
         <v-card flat class="pa-6" width="100%" max-width="800">
           <v-card-title class="text-h5 font-weight-bold mb-4">
@@ -66,7 +65,6 @@
                   class="custom-text-field" />
               </v-col>
 
-              <!-- Patient Fields -->
               <template v-if="form.role === 'patient'">
                 
                     <v-col cols="12" md="6" v-if="form.role === 'patient'">

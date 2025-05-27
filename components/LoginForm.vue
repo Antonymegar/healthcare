@@ -2,7 +2,6 @@
     <v-container fluid class="fill-height pa-0" >
     <v-row no-gutters class="fill-height">
       
-      <!-- Left image section -->
       <v-col cols="12" md="5" class="d-none d-md-flex">
         <v-img
           src="/images/login.jpeg"
@@ -100,7 +99,7 @@
       client_secret: $config.public.oauthClientSecret
     }
 
-    // 🔐 Request access token
+    
     const tokenResponse = await $axios.post('o/token/', payload, {
       headers: { 'Content-Type': 'application/json' }
     })
@@ -108,7 +107,6 @@
     const accessToken = tokenResponse.data.access_token
     localStorage.setItem('access_token', accessToken)
 
-    // 👤 Fetch user profile
     const userResponse = await $axios.get('api/user-profile/', {
       headers: { Authorization: `Bearer ${accessToken}` }
     })
@@ -117,12 +115,12 @@
     console.log("Iam user", user)
     localStorage.setItem('user', JSON.stringify(user))
 
-    // ✅ Show success
+  
     snackbar.text = 'Login successful!'
     snackbar.color = 'success'
     snackbar.show = true
 
-    // 🔀 Redirect based on role
+  
     if (user.role === 'doctor') {
       router.push('/doctors/appointments')
     } else if (user.role === 'patient') {
